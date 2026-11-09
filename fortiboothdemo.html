@@ -6,27 +6,28 @@
      dark navy stage · thin red accent rail · generous type · a 3-beat flow.
      Design plan tokens: */
   :root {
-    --bg:          #0b1020;
-    --panel:       #11162a;
-    --panel-2:     #161c35;
-    --line:        #2a3157;
-    --text:        #eef1fb;
-    --muted:       #a8b0cf;
-    --accent:      #ff2a1f;    /* Fortinet red */
-    --accent-ink:  #ffe4e2;
-    --dim:         #4e5680;
-    --ok:          #4bd1a0;
+    --bg:          #f6f7fb;
+    --panel:       #ffffff;
+    --panel-2:     #f1f3fb;
+    --line:        #dfe3f1;
+    --text:        #111528;
+    --muted:       #4d5578;
+    --accent:      #da291c;    /* Fortinet red */
+    --accent-ink:  #8c1a12;
+    --dim:         #8a93b8;
+    --ok:          #128a66;
+    --shadow:      0 1px 2px rgba(17,21,40,.05), 0 8px 24px rgba(17,21,40,.06);
 
     --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
     --font-body:    'Inter', ui-sans-serif, system-ui, sans-serif;
     --font-mono:    'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
 
-    color-scheme: dark;
+    color-scheme: light;
   }
-  :root[data-theme="light"]{
-    --bg:#f6f7fb; --panel:#ffffff; --panel-2:#f1f3fb; --line:#dfe3f1;
-    --text:#111528; --muted:#4d5578; --accent:#da291c; --accent-ink:#55101c;
-    --dim:#9099bd; --ok:#128a66; color-scheme: light;
+  :root[data-theme="dark"]{
+    --bg:#0b1020; --panel:#11162a; --panel-2:#161c35; --line:#2a3157;
+    --text:#eef1fb; --muted:#a8b0cf; --accent:#ff2a1f; --accent-ink:#ffe4e2;
+    --dim:#4e5680; --ok:#4bd1a0; --shadow:none; color-scheme: dark;
   }
 
   html,body{background:var(--bg);color:var(--text);margin:0}
@@ -37,8 +38,8 @@
     padding-right:max(16px, env(safe-area-inset-right,0px));
     padding-block:40px 56px;
     background:
-      radial-gradient(1200px 600px at 85% -10%, rgba(255,42,31,.14), transparent 60%),
-      radial-gradient(900px 500px at 10% 110%, rgba(42,86,255,.10), transparent 60%),
+      radial-gradient(1200px 600px at 85% -10%, rgba(218,41,28,.08), transparent 60%),
+      radial-gradient(900px 500px at 10% 110%, rgba(42,86,255,.07), transparent 60%),
       var(--bg);
     min-height:100%;
   }
@@ -54,14 +55,14 @@
   /* Hero */
   .scene{
     display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:36px;align-items:center;
-    padding:40px 44px;background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)) var(--panel);
+    padding:40px 44px;background:var(--panel);box-shadow:var(--shadow);
     border:1px solid var(--line);border-radius:22px;position:relative;overflow:hidden;
   }
   .scene::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
   @media (max-width:860px){.scene{grid-template-columns:1fr;padding:28px 22px}}
 
-  .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);background:rgba(255,42,31,.14);display:inline-block;padding:4px 10px;border-radius:4px;border:1px solid rgba(255,42,31,.35)}
-  :root[data-theme="light"] .eyebrow{color:#8c1a12;background:#fde3e0;border-color:#f3b3ad}
+  .eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-ink);background:#fde3e0;display:inline-block;padding:4px 10px;border-radius:4px;border:1px solid #f3b3ad}
+  :root[data-theme="dark"] .eyebrow{color:#ffe4e2;background:rgba(255,42,31,.14);border-color:rgba(255,42,31,.35)}
   .scene h1{
     font-family:var(--font-display); font-weight:700;
     font-size:clamp(32px, 4.6vw, 56px);
@@ -98,7 +99,7 @@
   .card{
     position:relative;
     background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px;
-    display:grid;gap:10px;min-height:220px;
+    display:grid;gap:10px;min-height:220px;box-shadow:var(--shadow);
   }
   .card .n{position:absolute;top:16px;right:18px;font-family:var(--font-mono);font-size:12px;color:var(--dim);letter-spacing:.1em}
   .card .step{font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
@@ -114,6 +115,7 @@
   .foot .hint{font-family:var(--font-mono);letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:var(--dim)}
   .foot b{color:var(--text);font-weight:600}
 
+  code{font-family:var(--font-mono);font-size:12.5px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
   :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -131,7 +133,7 @@
   <section class="scene">
     <div>
       <span class="eyebrow">Scene — Fortinet event, 10:42 am</span>
-      <h1>Attendee walks up. You have <em>four minutes</em> before the next one does.</h1>
+      <h1>A new conference is coming up, and <em>you are on booth duty.</em></h1>
       <p class="lede">FortiBoothDemo plays a chained set of Fortinet product demos full screen, with a short intro slide before each. You curate the playlist once; one click runs it at the booth all day.</p>
       <div class="meta">
         <span><b>5-sec</b> intro slide per demo</span>
